@@ -13,9 +13,7 @@
         <div class="text">
         Registration Form For Friends</div>
 
-        <form 
-		method="POST"
-		action="https://script.google.com/macros/s/AKfycbwiRZXu2LMrajWOx7FdSxlaeW9ZtLAO85NWfSq811B6LmYcsKVPxGonptBT5rw3pq5iVw/exec"> 
+       <form >
             <span class="main-title">Name</span>
 
            <div class="form-row"> 
@@ -42,17 +40,17 @@
             <div class="form-row">
               
              <div class="input-data">
-			 <input type="text" id="bdate" name="Month">
+			 <input type="text" id="bdate" name="month">
              <label for="birthdate">Month</label>
              </div>
 
              <div class="input-data">
-             <input type="text" id="bdate" name="Day">
+             <input type="text" id="bdate" name="day">
              <label for="birthdate">Day</label>
              </div>
 
                  <div class="input-data">
-				 <input type="text" id="bdate" name="Year">
+				 <input type="text" id="bdate" name="year">
                  <label for="birthdate">Year</label>
                  </div>
              </div>
@@ -66,40 +64,7 @@
                 </div>
                  </div>
 
-                 <div class="input-data">
-                    <span class="main-title">Zodiac Sign</span>   
-                <select id="country" name="Zodic sign">
-                  <option value="empty"></option>
-                  <option value="Aries">Aries</option>
-                  <option value="Taurus">Taurus</option>
-                  <option value="Gemini">Gemini</option>
-                  <option value="Cancer">Cancer</option>
-                  <option value="Leo">Leo</option>
-                  <option value="Virgo">Virgo</option>
-                  <option value="Libra">Libra</option>
-                  <option value="Scorpio">Scorpio</option>
-                  <option value="Sagittarius">Sagittarius</option>
-                  <option value="Capricorn">Capricorn</option>
-                  <option value="Aquarius">Aquarius</option>
-                  <option value="Pisces">Pisces</option>
-                </select>
-                </div>             
-            </div>
-
-             
-             <div class="form-row">
-                <div class="input-data">
-              
-             <div class="input-data">
-			  <div class="input-age">
-                  <span class="main-title">Gender</span>
-                 <input type="text" id="gender" name="gender" placeholder="your gender..." > 
-                </div>
-             </div>
-            
-              </div>
-               
-                <div class="input-data">
+			<div class="input-data">
                 <span class="main-title">Country</span>   
             <select id="country" name="country">
               <option value="empty"></option>
@@ -116,6 +81,20 @@
             </div>
             </div>
 
+             
+             <div class="form-row">
+                <div class="input-data">
+              
+             <div class="input-data">
+			  <div class="input-gender">
+                  <span class="main-title">Gender</span>
+                 <input type="text" id="gender" name="gender" placeholder="your gender..." > 
+                </div>
+             </div>
+            
+              </div>
+            </div>
+
             <div class="form-row">
                 <div class="input-data">
                     <span class="main-title">Address</span>   
@@ -127,16 +106,44 @@
              <div class="form-row">
                 <div class="input-data">
                     <span class="main-title">Phone Number</span>   
-                    <input type="text" id="pnumber" name="phone number" placeholder="(000) 000-000">    
+                    <input type="text" id="pnumber" name="phonenumber" placeholder="(000) 000-000">    
                 </div>
                 <div class="input-data">
                     <span class="main-title">E-mail</span>  
-                    <input type="text" id="email" name="E-mail" placeholder="ex: email@yahoo.com">
+                    <input type="text" id="email" name="email" placeholder="ex: email@yahoo.com">
                     </div>
              </div>
              <div class="form-row">
-            <input type="submit" value="Submit"></div>
+            <input type="submit" value="Submit" id="sub">
+			</div>
+			<center><h1 id="msg"></h1></center>
           </form>
+		  
+		  
+		  <script>
+        let form = document.querySelector("form");
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            document.querySelector("#sub").value = "Submitting..";
+            let data = new FormData(form);
+            // Encode home address value
+            const homeAddress = document.querySelector("#address").value;
+            data.set("homeaddress", encodeURIComponent(homeAddress));
+            fetch('https://script.google.com/macros/s/AKfycbzAMrK_lXqKk2dorwvrR5mgnUDODDa1dCdijpQcfaS38m0eW350TkRxFnBWuge4tNcd/exec', {
+                    method: 'POST',
+                    body: data
+                })
+                .then(res => res.text())
+                .then(data => {
+                    document.querySelector("#msg").innerHTML = data;
+                    document.querySelector("#sub").value = "Submit";
+                    // Hide the success message after 3 seconds
+                    setTimeout(() => {
+                        document.querySelector("#msg").innerHTML = "";
+                    }, 3000);
+                });
+        })
+    </script>
      </div>
 
     </body>

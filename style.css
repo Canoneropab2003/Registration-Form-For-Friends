@@ -37,7 +37,7 @@ body{
     font-weight: 600;
     margin: 50px 0px;
     text-align: center;
-    background: -webkit-linear-gradient(right, #65d8e4 , #9f01ea, #56d8e4, #9f01ea);
+    background: -webkit-linear-gradient(right, #dfe4ea, #ced6e0, #bdc9d4, #acbdc8, #9baecb, #8b9abf, #7a8fb6, #6976ac, #57658e, #464c72, #343653, #232238);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -74,11 +74,16 @@ form .form-row .input-data{
 }
 
 form .form-row .input-age{
-    width: 30%;
+    width: 60%;
     height: 80px;
     margin: 10px 10px;
 }
 
+form .form-row .input-gender{
+    width: 30%;
+    height: 80px;
+    margin: 5px 1px;
+}
 
  .main-title{
     font-size: 20px;
@@ -118,10 +123,14 @@ input[type=text], select {
     opacity: 70%;
   }
  
-
+.form-row input[type="submit"]{
+    margin-right: 20%;
+    margin-left: 10%;
+    color: rgb(0, 100, 0);
+}
   input[type=submit] {
     width: 100%;
-    background: linear-gradient(to right top, #d16ba5, #c777b9, #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);
+    background: linear-gradient(to right top, #dfe4ea, #ced6e0, #bdc9d4, #acbdc8, #9baecb, #8b9abf, #7a8fb6, #6976ac, #57658e, #464c72, #343653, #232238);
     opacity: 90%;
     color: white;
     padding: 14px 20px;
